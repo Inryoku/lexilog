@@ -1,14 +1,12 @@
 // src/styles/theme.ts
 export const theme = {
   colors: {
-    base: "#E7E2CD", // コンテナや背景の基調色
-    accent: "#ff4081", // アクション・強調色（primary）
+    spot: "#E2DED0", // スポットカラー（背景色）
+    subSpot: "#D9D4C0", // サブスポットカラー（背景色）
+    boldLabel: "#000000", // 太字ラベル色
+    accent: "#FF0000", // アクション・強調色（primary）
     text: "#000000", // 通常テキスト色
-    muted: "#D9D4C0", // 補助的・非アクティブな要素
-    danger: "#e53935", // エラー・警告用
-    inputBg: "#E2DED0", // インプットの背景
-    buttonText: "#ffffff", // ボタン文字色
-    bg: "#111111", // アプリ全体の背景（body-level）
+    bg: "#E7E2CD",
   },
   font: {
     heading: "'Gloria Hallelujah', cursive",
