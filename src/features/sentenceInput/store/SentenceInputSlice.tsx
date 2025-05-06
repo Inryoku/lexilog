@@ -1,21 +1,21 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
-  sentence: "",
+  sentences: [] as string[],
 };
 
 const SentenceInputSlice = createSlice({
   name: "sentenceInput",
   initialState,
   reducers: {
-    setSentence: (state, action: PayloadAction<string>) => {
-      state.sentence = action.payload;
+    setSentences: (state, action: PayloadAction<string>) => {
+      state.sentences = [action.payload];
     },
-    clearSentence: (state) => {
-      state.sentence = "";
+    clearSentences: (state) => {
+      state.sentences = [];
     },
   },
 });
 
-export const { setSentence, clearSentence } = SentenceInputSlice.actions;
+export const { setSentences, clearSentences } = SentenceInputSlice.actions;
 export default SentenceInputSlice.reducer;

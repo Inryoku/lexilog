@@ -1,11 +1,19 @@
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { RootState } from "../../../store/store"; // store の型定義ファイル
 import React from "react";
 import clsx from "clsx";
-import excludeWords from "../../../entities/excludeWords"; // excludeWords をインポート
+import excludeWords from "../../../entities/excludeWords";
 
-export default function DisplayAreaView(
-  displaySentences: string,
-  handleWordClick: (word: string, sentenceIndex: number) => void
-) {
+export const DisplayAreaView = () => {
+  const displaySentences = useSelector(
+    (state: RootState) => state.sentenceInput.sentences
+  );
+
+  useEffect(() => {
+    console.log("Redux の状態が変わった:", displaySentences);
+  }, [displaySentences]);
+
   const splitIntoWords = (sentence: string): string[] => {
     return sentence.match(/\w+|[^\s\w]+/g) || [];
   };
@@ -29,9 +37,6 @@ export default function DisplayAreaView(
                   className={clsx("m-1", {
                     "bg-gray-200 cursor-pointer": isClickable,
                   })}
-                  onClick={() =>
-                    isClickable && handleWordClick(word, sentenceIndex)
-                  }
                 >
                   {word}
                 </span>
@@ -42,4 +47,6 @@ export default function DisplayAreaView(
       ))}
     </div>
   );
-}
+};
+
+export default DisplayAreaView;

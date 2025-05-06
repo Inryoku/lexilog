@@ -1,7 +1,13 @@
 import React from "react";
+import DisplayAreaView from "./components/DisplayAreaView";
 
 export const DisplayAreaContainer = () => {
-  return <div>HTMLTextAreaElement</div>;
+  return (
+    <>
+      <p>dis</p>
+      <DisplayAreaView />
+    </>
+  );
 };
 
 export default DisplayAreaContainer;
