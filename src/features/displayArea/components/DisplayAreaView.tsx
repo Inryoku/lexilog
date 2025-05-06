@@ -5,13 +5,19 @@ import React from "react";
 import clsx from "clsx";
 import excludeWords from "../../../entities/excludeWords";
 
-export const DisplayAreaView = () => {
+interface DisplayAreaViewProps {
+  onWordClick: (word: string, sentenceIndex: number) => void;
+}
+
+export const DisplayAreaView: React.FC<DisplayAreaViewProps> = ({
+  onWordClick,
+}) => {
   const displaySentences = useSelector(
     (state: RootState) => state.sentenceInput.sentences
   );
 
   useEffect(() => {
-    console.log("Redux の状態が変わった:", displaySentences);
+    console.log("Redux:sentenceInput.sentences Has Changed:", displaySentences);
   }, [displaySentences]);
 
   const splitIntoWords = (sentence: string): string[] => {
@@ -25,7 +31,7 @@ export const DisplayAreaView = () => {
   };
 
   return (
-    <div className="flex flex-wrap bg-slate-50 text-sm text-black">
+    <div className="flex flex-wrap text-text">
       {displaySentences.map((sentence: string, sentenceIndex: number) => (
         <div key={sentenceIndex} className="flex flex-col m-1">
           <p key={sentenceIndex} className="flex flex-wrap">
@@ -35,8 +41,11 @@ export const DisplayAreaView = () => {
                 <span
                   key={wordIndex}
                   className={clsx("m-1", {
-                    "bg-gray-200 cursor-pointer": isClickable,
+                    "bg-subSpot cursor-pointer": isClickable,
                   })}
+                  onClick={() =>
+                    isClickable && onWordClick(word, sentenceIndex)
+                  }
                 >
                   {word}
                 </span>

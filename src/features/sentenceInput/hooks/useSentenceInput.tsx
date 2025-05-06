@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { setSentenceUseCase } from "../usecases/setSentenceUseCase";
+import { setSentenceUseCase } from "../useCases/setSentenceUseCase";
 import debounce from "lodash.debounce";
 
 export const useSentenceInput = () => {

@@ -7,7 +7,7 @@ type SentenceInputViewProps = {
 
 export function SentenceInputView({ value, onChange }: SentenceInputViewProps) {
   return (
-    <div className="w-full max-w-6xl px-5 mx-auto">
+    <div className="my-8">
       <textarea
         rows={8}
         value={value}

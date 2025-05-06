@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { store, persistor } from "./store/store";
 import { PersistGate } from "redux-persist/integration/react";
 
-console.log("🔵 main.tsx 起動");
+console.log("🔵 main.tsx On");
 persistor.purge(); // 一度だけ状態をリセットしたいときに
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

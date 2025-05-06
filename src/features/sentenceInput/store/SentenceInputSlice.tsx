@@ -8,8 +8,8 @@ const SentenceInputSlice = createSlice({
   name: "sentenceInput",
   initialState,
   reducers: {
-    setSentences: (state, action: PayloadAction<string>) => {
-      state.sentences = [action.payload];
+    setSentences: (state, action: PayloadAction<string[]>) => {
+      state.sentences = action.payload;
     },
     clearSentences: (state) => {
       state.sentences = [];

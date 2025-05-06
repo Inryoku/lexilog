@@ -9,7 +9,7 @@ import ComprehensionPage from "../pages/ComprehensionPage";
 import WordbookPage from "../pages/WordbookPage";
 
 export default function App() {
-  console.log("🟢 App.tsx 表示された");
+  console.log("🟢 App.tsx Displayed");
   return (
     <Router>
       <Routes>
