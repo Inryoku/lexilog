@@ -57,7 +57,7 @@ const EXCLUDED_WORDS = [
   "it",
   "they",
   "we",
-  "I",
+  "i",
   "you",
   "this",
   "that",
@@ -69,6 +69,63 @@ const EXCLUDED_WORDS = [
   "her",
   "us",
   "them",
+
+  // 副詞
+  "not",
+  "no",
+
+  //所有格
+  "my",
+  "your",
+  "his",
+  "her",
+  "its",
+  "our",
+  "their",
+  "mine",
+  "yours",
+  "hers",
+  "its",
+  "ours",
+  "theirs",
+
+  // 省略形
+  "re",
+  "ve",
+  "ll",
+  "d",
+  "t",
+  "m",
+  "s",
+
+  // その他　現在の仕様では対応できないもの
+  // アルファベット一文字系
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
 ];
 
 export default EXCLUDED_WORDS;

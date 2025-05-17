@@ -1,10 +1,11 @@
 import nlp from "compromise";
 
 export const getLemma = (word: string) => {
-  // 原型化処理
+  const normalizedInput = word.toLowerCase();
   const lemma =
-    nlp(word).verbs().toInfinitive().out() ||
-    nlp(word).nouns().toSingular().out() ||
-    word; // 該当がなければそのまま
-  return lemma; // 結果を返す
+    nlp(normalizedInput).verbs().toInfinitive().out() ||
+    nlp(normalizedInput).nouns().toSingular().out() ||
+    normalizedInput;
+  console.log("Fetched lemma:", lemma);
+  return lemma.toLowerCase();
 };

@@ -1,4 +1,4 @@
-import { setSentences } from "../store/SentenceInputSlice";
+import { setSentences } from "../slice/SentenceInputSlice";
 import { sentenceProcessor } from "../services/sentenceProcessor";
 import { Dispatch, UnknownAction } from "@reduxjs/toolkit";
 

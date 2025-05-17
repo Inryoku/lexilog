@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { combineReducers } from "redux";
-import sentenceInputReducer from "../features/sentenceInput/store/SentenceInputSlice";
+import sentenceInputReducer from "../features/sentenceInput/slice/SentenceInputSlice";
 
 // redux-persist の設定
 const persistConfig = {
