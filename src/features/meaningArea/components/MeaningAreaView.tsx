@@ -4,14 +4,13 @@ import { useEffect } from "react";
 import { RootState } from "../../../store/store";
 import { WordEntry } from "../../../entities/types/wordEntry";
 
-type MeaningAreaViewProps = {
-  isLoading: boolean;
-};
-
-export const MeaningAreaView = ({ isLoading }: MeaningAreaViewProps) => {
+export const MeaningAreaView = () => {
   const displayWordData = useSelector(
     (state: RootState) => state.clickedWord.clickedWord
   ) as WordEntry | null;
+  const isLoading = useSelector(
+    (state: RootState) => state.clickedWord.isLoading
+  );
 
   useEffect(() => {
     console.log("Redux:sentenceInput.sentences Has Changed:", displayWordData);

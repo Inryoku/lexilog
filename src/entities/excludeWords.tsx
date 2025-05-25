@@ -98,6 +98,42 @@ const EXCLUDED_WORDS = [
   "m",
   "s",
 
+  // 数字
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+  "ten",
+  "eleven",
+  "twelve",
+  "thirteen",
+  "fourteen",
+  "fifteen",
+  "sixteen",
+  "seventeen",
+  "eighteen",
+  "nineteen",
+  "twenty",
+  "thirty",
+  "forty",
+  "fifty",
+  "sixty",
+  "seventy",
+  "eighty",
+  "ninety",
+  "hundred",
+
+  // 反応
+  "yes",
+  "no",
+  "okay",
+  "ok",
+
   // その他　現在の仕様では対応できないもの
   // アルファベット一文字系
   "a",

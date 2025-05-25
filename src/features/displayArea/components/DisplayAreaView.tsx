@@ -16,6 +16,9 @@ export const DisplayAreaView: React.FC<DisplayAreaViewProps> = ({
   const displaySentences = useSelector(
     (state: RootState) => state.sentenceInput.sentences
   );
+  const clickedSentenceIndex = useSelector(
+    (state: RootState) => state.clickedWord.sentenceIndex
+  );
 
   useEffect(() => {
     console.log("Redux:sentenceInput.sentences Has Changed:", displaySentences);
@@ -53,7 +56,9 @@ export const DisplayAreaView: React.FC<DisplayAreaViewProps> = ({
               );
             })}
           </p>
-          <MeaningAreaContainer />
+          {clickedSentenceIndex === sentenceIndex ? (
+            <MeaningAreaContainer />
+          ) : null}
         </div>
       ))}
     </div>

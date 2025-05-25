@@ -3,10 +3,14 @@ import { WordEntry } from "../../../entities/types/wordEntry";
 
 type WordState = {
   clickedWord: WordEntry | null;
+  isLoading: boolean;
+  sentenceIndex: number | null;
 };
 
 const initialState: WordState = {
   clickedWord: null,
+  isLoading: false,
+  sentenceIndex: null,
 };
 
 const clickedWordSlice = createSlice({
@@ -16,8 +20,15 @@ const clickedWordSlice = createSlice({
     setClickedWord: (state, action: PayloadAction<WordEntry>) => {
       state.clickedWord = action.payload;
     },
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload;
+    },
+    setSentenceIndex: (state, action: PayloadAction<number | null>) => {
+      state.sentenceIndex = action.payload;
+    },
   },
 });
 
-export const { setClickedWord } = clickedWordSlice.actions;
+export const { setClickedWord, setLoading, setSentenceIndex } =
+  clickedWordSlice.actions;
 export default clickedWordSlice.reducer;
