@@ -4,7 +4,7 @@ import MeaningAreaView from "./components/MeaningAreaView";
 export const MeaningAreaContainer = () => {
   return (
     <>
-      <MeaningAreaView isLoading={false} />
+      <MeaningAreaView />
     </>
   );
 };

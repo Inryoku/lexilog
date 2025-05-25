@@ -89,6 +89,24 @@ const EXCLUDED_WORDS = [
   "ours",
   "theirs",
 
+  // 助動詞
+  "will",
+  "shall",
+  "can",
+  "may",
+  "might",
+  "must",
+  "could",
+  "would",
+  "should",
+  "ought",
+  "need",
+  "used",
+
+  // 指示詞
+  "here",
+  "there",
+
   // 省略形
   "re",
   "ve",

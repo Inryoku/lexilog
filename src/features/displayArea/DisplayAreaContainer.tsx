@@ -8,7 +8,6 @@ export const DisplayAreaContainer = () => {
   const { handleWordClick } = useDisplayAreaHooks();
   return (
     <>
-      <p>displayArea is here</p>
       <DisplayAreaView onWordClick={handleWordClick} />
     </>
   );
