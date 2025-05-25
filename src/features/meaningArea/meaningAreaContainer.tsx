@@ -1,9 +1,10 @@
 import React from "react";
+import MeaningAreaView from "./components/MeaningAreaView";
 
 export const MeaningAreaContainer = () => {
   return (
     <>
-      <p>MeaningAreaContainer is here</p>
+      <MeaningAreaView isLoading={false} />
     </>
   );
 };

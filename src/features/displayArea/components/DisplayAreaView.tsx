@@ -4,6 +4,7 @@ import { RootState } from "../../../store/store"; // store の型定義ファイ
 import React from "react";
 import clsx from "clsx";
 import excludeWords from "../../../entities/excludeWords";
+import { MeaningAreaContainer } from "../../../features/meaningArea/meaningAreaContainer";
 
 interface DisplayAreaViewProps {
   onWordClick: (word: string, sentenceIndex: number) => void;
@@ -52,6 +53,7 @@ export const DisplayAreaView: React.FC<DisplayAreaViewProps> = ({
               );
             })}
           </p>
+          <MeaningAreaContainer />
         </div>
       ))}
     </div>

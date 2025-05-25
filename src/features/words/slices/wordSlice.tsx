@@ -4,12 +4,10 @@ import { WordEntryMap } from "../../../entities/types/wordEntryMap";
 
 type WordState = {
   entries: WordEntryMap; //WordEntryMap = Record<string, WordEntry>
-  selectedWord: WordEntry | null;
 };
 
 const initialState: WordState = {
   entries: {},
-  selectedWord: null,
 };
 
 const wordSlice = createSlice({
@@ -32,15 +30,12 @@ const wordSlice = createSlice({
         state.entries[newEntry.lemma] = newEntry; // 新規登録
       }
     },
-    setSelectedWord: (state, action: PayloadAction<WordEntry>) => {
-      state.selectedWord = action.payload;
-    },
+
     setEntries: (state, action: PayloadAction<Record<string, WordEntry>>) => {
       state.entries = action.payload;
     },
   },
 });
 
-export const { addOrUpdateWordEntry, setSelectedWord, setEntries } =
-  wordSlice.actions;
+export const { addOrUpdateWordEntry, setEntries } = wordSlice.actions;
 export default wordSlice.reducer;
