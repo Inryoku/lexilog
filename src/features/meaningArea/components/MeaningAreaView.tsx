@@ -13,7 +13,7 @@ export const MeaningAreaView = () => {
   );
 
   useEffect(() => {
-    console.log("Redux:sentenceInput.sentences Has Changed:", displayWordData);
+    console.log("state.clickedWord.clickedWord Has Changed:", displayWordData);
   }, [displayWordData]);
 
   return (

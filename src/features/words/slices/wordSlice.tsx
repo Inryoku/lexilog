@@ -25,7 +25,7 @@ const wordSlice = createSlice({
           }
         });
         existing.lastClickedTime = newEntry.lastClickedTime;
-        existing.clickCount + newEntry.clickCount; // クリック数を更新
+        existing.clickCount = existing.clickCount + newEntry.clickCount; // クリック数を更新
       } else {
         state.entries[newEntry.lemma] = newEntry; // 新規登録
       }

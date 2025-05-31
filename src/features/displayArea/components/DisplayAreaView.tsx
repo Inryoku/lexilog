@@ -1,22 +1,17 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../../../store/store"; // store の型定義ファイル
 import React from "react";
 import { DisplaySentence } from "./DisplaySentence";
 
 interface DisplayAreaViewProps {
   onWordClick: (word: string, sentenceIndex: number) => void;
+  displaySentences: string[];
+  clickedSentenceIndex: number | null;
 }
 
 export const DisplayAreaView: React.FC<DisplayAreaViewProps> = ({
   onWordClick,
+  displaySentences,
+  clickedSentenceIndex,
 }) => {
-  const displaySentences = useSelector(
-    (state: RootState) => state.sentenceInput.sentences
-  );
-  const clickedSentenceIndex = useSelector(
-    (state: RootState) => state.clickedWord.sentenceIndex
-  );
-
   return (
     <div className="flex flex-wrap text-text">
       {displaySentences.map((sentence, index) => (

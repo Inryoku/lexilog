@@ -20,7 +20,7 @@ export const DisplaySentence = ({
   const words = splitIntoWords(sentence);
 
   return (
-    <div className="flex flex-col mb-4">
+    <div className="flex flex-col mb-6">
       <p className="flex flex-wrap">
         {words.map((word: string, wordIndex: number) => (
           <ClickableWord

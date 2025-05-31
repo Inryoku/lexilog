@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
-import { addOrUpdateWordEntry } from "../../words/slices/wordSlice";
-import { setClickedWord } from "../slices/clickedWordSlice";
-import { saveEntryToFirestore } from "../../words/services/saveEntryToFirestore";
+import { addOrUpdateWordEntry } from "../slices/wordSlice";
+import { setClickedWord } from "../../displayArea/slices/clickedWordSlice";
+import { saveEntryToFirestore } from "../services/saveEntryToFirestore";
 import { useAuth } from "../../auth/AuthContext";
 import { WordEntry } from "../../../entities/types/wordEntry";
 

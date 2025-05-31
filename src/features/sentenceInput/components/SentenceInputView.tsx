@@ -13,7 +13,7 @@ export function SentenceInputView({ value, onChange }: SentenceInputViewProps) {
         value={value}
         onChange={onChange}
         placeholder="Type or Paste here"
-        className="w-full p-2 bg-spot text-subText focus:text-text border-2 border-y-black border-x-bg focus:outline-none focus:border-black"
+        className="w-full p-2 text-base bg-spot text-subText focus:text-text border-2 border-y-black border-x-bg focus:outline-none focus:border-black"
       />
     </div>
   );

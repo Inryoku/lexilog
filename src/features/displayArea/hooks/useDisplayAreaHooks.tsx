@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/store"; // store の型定義ファイル
-import { createWordEntry } from "../useCases/createWordEntry"; // useCase
-import { useRegisterWordEntry } from "../useCases/useRegisterWordEntry"; // useCase
+import { createWordEntry } from "../../words/useCases/createWordEntry"; // useCase
+import { useRegisterWordEntry } from "../../words/useCases/useRegisterWordEntry"; // useCase
 import {
   useStartWordProcessing,
   useEndWordProcessing,
@@ -12,6 +12,11 @@ export const useDisplayAreaHooks = () => {
   const displaySentences = useSelector(
     (state: RootState) => state.sentenceInput.sentences
   );
+
+  const clickedSentenceIndex = useSelector(
+    (state: RootState) => state.clickedWord.sentenceIndex
+  );
+
   const registerWordEntry = useRegisterWordEntry();
   const startProcessing = useStartWordProcessing();
   const endProcessing = useEndWordProcessing();
@@ -28,5 +33,5 @@ export const useDisplayAreaHooks = () => {
     endProcessing();
   };
 
-  return { handleWordClick };
+  return { handleWordClick, displaySentences, clickedSentenceIndex };
 };

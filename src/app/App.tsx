@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import ComprehensionPage from "../pages/ComprehensionPage";
 import WordbookPage from "../pages/WordbookPage";
-import LoginPage from "../pages/LoginPage";
+
 import { Layout } from "../pages/Layout";
 
 export default function App() {
@@ -21,7 +21,6 @@ export default function App() {
           <Route path="/wordbook" element={<WordbookPage />} />
         </Route>
 
-        <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
     </Router>

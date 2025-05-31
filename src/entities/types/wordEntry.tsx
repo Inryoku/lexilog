@@ -4,6 +4,6 @@ export type WordEntry = {
   synonyms: string[]; // [] ← 空配列
   sentences: string[]; // [] ← 空配列
   clickCount: number; // 0 ← 初期値
-  lastClickedTime: number | null; // ← getTime() の値（ミリ秒 UNIX タイム）
+  lastClickedTime: number; // ← getTime() の値（ミリ秒 UNIX タイム）
   isBookmarked: boolean; // false ← 初期値
 };

@@ -5,7 +5,7 @@ export default {
       colors: {
         spot: "#E2DED0", // スポットカラー（背景色）
         subSpot: "#D9D4C0", // サブスポットカラー（背景色）
-        boldLabel: "#000000", // 太字ラベル色
+        boldLabel: "#333333", // 太字ラベル色
         accent: "#FF0000", // アクション・強調色（primary）
         text: "#333333", // 通常テキスト色
         subText: "#868686", // サブテキスト色

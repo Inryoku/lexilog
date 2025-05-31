@@ -5,5 +5,5 @@
 body {
   @apply bg-bg;
   @apply font-gloock;
-  @apply text-base;
+  @apply text-sm;
 }

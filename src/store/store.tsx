@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import sentenceInputReducer from "../features/sentenceInput/slices/SentenceInputSlice";
+import sentenceInputReducer from "../features/sentenceInput/slices/sentenceInputSlice";
 import clickedWordReducer from "../features/displayArea/slices/clickedWordSlice";
 import wordReducer from "../features/words/slices/wordSlice";
 
