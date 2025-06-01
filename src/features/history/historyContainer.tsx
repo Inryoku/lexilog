@@ -4,7 +4,7 @@ import { WordEntryCard } from "../words/components/WordEntryCard";
 import { WordbookPagination } from "../wordbook/components/WordbookPagination";
 import { WordEntry } from "../../entities/types/wordEntry";
 
-export default function historyContainer() {
+export default function HistoryContainer() {
   const {
     entries,
     totalPages,

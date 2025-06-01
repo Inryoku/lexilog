@@ -1,6 +1,6 @@
 import React from "react";
 import SentenceInputContainer from "../features/sentenceInput/SentenceInputContainer";
-import DisplayAreaContainer from "../features/displayArea/DisplayAreaContainer";
+import DisplayAreaContainer from "../features/displayArea/displayAreaContainer";
 
 export default function ComprehensionPage() {
   console.log("🟡 ComprehensionPage Displayed");

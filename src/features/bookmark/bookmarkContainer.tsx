@@ -15,7 +15,7 @@ export default function BookmarkContainer() {
   } = useBookmarkHooks();
 
   return (
-    <div className="flex flex-col items-center ">
+    <div className="flex flex-col items-center w-full">
       {entries.map((entry: WordEntry) => (
         <WordEntryCard
           key={entry.lemma}

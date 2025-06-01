@@ -2,18 +2,13 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // 各ユーザーごとのドキュメント構造
+    // 各ユーザーのデータにアクセス
     match /users/{userId} {
-      // /users/{uid} に対して、ログイン済 & uid一致 のときのみOK
+      // /users/{uid} に対してログイン済み＆本人のみアクセス許可
       allow read, write: if request.auth != null && request.auth.uid == userId;
 
-      // /users/{uid}/bookmarks/{word}
-      match /bookmarks/{word} {
-        allow read, write: if request.auth != null && request.auth.uid == userId;
-      }
-
-      // /users/{uid}/history/{entryId}
-      match /history/{entryId} {
+      // 統合された wordEntries（ブックマークや履歴を兼ねる）
+      match /wordEntries/{entryId} {
         allow read, write: if request.auth != null && request.auth.uid == userId;
       }
     }
