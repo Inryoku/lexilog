@@ -12,15 +12,17 @@ export default function HistoryContainer() {
     handlePageChange,
     handleBookmarkToggle,
     visiblePages,
+    handlePlaySpeech,
   } = useHistoryHooks();
 
   return (
-    <div className="flex flex-col items-center ">
+    <div className="flex flex-col items-center w-full">
       {entries.map((entry: WordEntry) => (
         <WordEntryCard
           key={entry.lemma}
           entry={entry}
           onBookmarkToggle={handleBookmarkToggle}
+          handlePlaySpeech={handlePlaySpeech}
         />
       ))}
 

@@ -12,6 +12,7 @@ export default function BookmarkContainer() {
     handlePageChange,
     handleBookmarkToggle,
     visiblePages,
+    handlePlaySpeech,
   } = useBookmarkHooks();
 
   return (
@@ -21,6 +22,7 @@ export default function BookmarkContainer() {
           key={entry.lemma}
           entry={entry}
           onBookmarkToggle={handleBookmarkToggle}
+          handlePlaySpeech={handlePlaySpeech}
         />
       ))}
 
