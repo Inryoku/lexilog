@@ -1,9 +1,9 @@
 import { usePagination } from "../../wordbook/useCases/usePagination";
 import { useHandleToggleBookmark } from "../../words/useCases/handleToggleBookmark";
 
-export const useHistoryHooks = () => {
+export const useBookmarkHooks = () => {
   const { entries, totalPages, page, handlePageChange, visiblePages } =
-    usePagination({ filter: "all" });
+    usePagination({ filter: "bookmarked" });
   const handleBookmarkToggle = useHandleToggleBookmark();
 
   return {

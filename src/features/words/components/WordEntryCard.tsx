@@ -11,7 +11,7 @@ export const WordEntryCard: React.FC<WordEntryCardProps> = ({
   onBookmarkToggle,
 }) => {
   return (
-    <div className="bg-spot mx-2 border-y border-black p-4 max-w-md  ">
+    <div className="w-11/12 bg-spot border-b border-black p-4">
       {/* 見出し */}
       <div className="flex justify-between items-center border-b border-black pb-1 mb-2">
         <h2 className="text-xl font-bold lowercase">{entry.lemma}</h2>
