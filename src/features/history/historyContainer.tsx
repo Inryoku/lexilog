@@ -1,20 +1,28 @@
 import React from "react";
-import { useState } from "react";
-import { usePaginatedEntries } from "./useCases/usePaginatedEntries";
+import { useHistoryHooks } from "./hooks/useHistoryHooks";
 import { WordEntryCard } from "../words/components/WordEntryCard";
-import { Pagination } from "./components/HistoryPagination";
+import { HistoryPagination } from "./components/HistoryPagination";
+import { WordEntry } from "../../entities/types/wordEntry";
 
 export default function historyContainer() {
-  const [page, setPage] = useState(1);
-  const { entries, totalPages } = usePaginatedEntries(page);
+  const { entries, totalPages, page, handlePageChange, handleBookmarkToggle } =
+    useHistoryHooks();
 
   return (
     <div>
-      {entries.map((entry) => (
-        <WordEntryCard key={entry.lemma} entry={entry} />
+      {entries.map((entry: WordEntry) => (
+        <WordEntryCard
+          key={entry.lemma}
+          entry={entry}
+          onBookmarkToggle={handleBookmarkToggle}
+        />
       ))}
 
-      <Pagination current={page} total={totalPages} onPageChange={setPage} />
+      <HistoryPagination
+        current={page}
+        total={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 }

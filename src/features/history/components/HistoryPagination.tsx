@@ -1,6 +1,7 @@
-export const Pagination = ({
-  current,
+import React from "react";
 
+export const HistoryPagination = ({
+  current,
   total,
   onPageChange,
 }: {
@@ -8,27 +9,39 @@ export const Pagination = ({
   total: number;
   onPageChange: (page: number) => void;
 }) => {
-  const handlePageChange = (page: number) => {
-    if (page < 1 || page > total) return;
-    onPageChange(page);
-  };
+  // 表示するページ番号のリスト（例：1〜total）
+  const pages = Array.from({ length: total }, (_, i) => i + 1);
 
   return (
-    <div className="pagination">
+    <div className="flex items-center gap-2 justify-center mt-4 flex-wrap">
       <button
         disabled={current === 1}
-        onClick={() => handlePageChange(current - 1)}
+        onClick={() => onPageChange(current - 1)}
+        className="px-2 py-1 rounded bg-gray-200 hover:bg-gray-300 disabled:bg-gray-100 disabled:text-gray-400 transition"
       >
-        Previous
+        ←
       </button>
-      <span>
-        Page {current} of {total}
-      </span>
+
+      {pages.map((page) => (
+        <button
+          key={page}
+          onClick={() => onPageChange(page)}
+          className={`px-3 py-1 rounded transition ${
+            page === current
+              ? "bg-blue-500 text-white"
+              : "bg-gray-100 hover:bg-gray-300"
+          }`}
+        >
+          {page}
+        </button>
+      ))}
+
       <button
         disabled={current === total}
-        onClick={() => handlePageChange(current + 1)}
+        onClick={() => onPageChange(current + 1)}
+        className="px-2 py-1 rounded bg-gray-200 hover:bg-gray-300 disabled:bg-gray-100 disabled:text-gray-400 transition"
       >
-        Next
+        →
       </button>
     </div>
   );

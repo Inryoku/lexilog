@@ -1,5 +1,6 @@
 import React from "react";
+import HistoryContainer from "../features/history/historyContainer";
 
 export default function WordbookPage() {
-  return <div>WordbookPage</div>;
+  return <HistoryContainer />;
 }
