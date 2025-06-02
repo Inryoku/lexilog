@@ -1,9 +1,10 @@
 import React from "react";
 import { DisplaySentence } from "./DisplaySentence";
+import { SentenceSet } from "../../../entities/types/sentenceSet";
 
 interface DisplayAreaViewProps {
   onWordClick: (word: string, sentenceIndex: number) => void;
-  displaySentences: string[];
+  displaySentences: SentenceSet[];
   clickedSentenceIndex: number | null;
 }
 
@@ -12,9 +13,11 @@ export const DisplayAreaView: React.FC<DisplayAreaViewProps> = ({
   displaySentences,
   clickedSentenceIndex,
 }) => {
+  const flatSentences = displaySentences.flatMap((set) => set.sentences);
+
   return (
     <div className="flex flex-wrap text-text">
-      {displaySentences.map((sentence, index) => (
+      {flatSentences.map((sentence, index) => (
         <DisplaySentence
           key={index}
           sentence={sentence}

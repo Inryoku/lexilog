@@ -7,6 +7,7 @@ import {
   useEndWordProcessing,
 } from "../useCases/useSetWordLoading"; // useCase
 import { useSetSentenceIndex } from "../useCases/useSetSentenceIndex"; // useCase
+import { findSentenceAndDocumentId } from "../../words/useCases/findSentenceAndDocumentId"; // useCase
 
 export const useDisplayAreaHooks = () => {
   const displaySentences = useSelector(
@@ -26,9 +27,16 @@ export const useDisplayAreaHooks = () => {
     startProcessing();
     setSentenceIndex(sentenceIndex);
     console.log("Word clicked:", word, "Sentence index:", sentenceIndex);
-    const sentence = displaySentences[sentenceIndex];
-    const wordEntry = await createWordEntry(word, sentence);
+
+    // SentenceSet[] から文と対応する documentId を探す
+    const { sentence, documentId } = findSentenceAndDocumentId(
+      displaySentences,
+      sentenceIndex
+    );
+
+    const wordEntry = await createWordEntry(word, sentence, documentId);
     console.log("Word object created:", wordEntry);
+
     await registerWordEntry(wordEntry);
     endProcessing();
   };

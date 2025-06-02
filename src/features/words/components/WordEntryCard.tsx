@@ -44,18 +44,17 @@ export const WordEntryCard: React.FC<WordEntryCardProps> = ({
         ))}
       </div>
 
-      {/* sentences */}
       {entry.sentences[0] && (
-        <p className=" text-gray-700">
+        <p className="text-gray-700">
           <button
-            onClick={() => handlePlaySpeech(entry.sentences[0])}
+            onClick={() => handlePlaySpeech(entry.sentences[0].text)}
             className="text-gray-500 text-xl focus:outline-none hover:text-gray-800 transition-colors"
           >
             <GiSoundWaves size={12} />
           </button>
           <span
             dangerouslySetInnerHTML={{
-              __html: entry.sentences[0].replace(
+              __html: entry.sentences[0].text.replace(
                 new RegExp(`(${entry.lemma})`, "gi"),
                 `<mark class="bg-red-400 rounded px-1">$1</mark>`
               ),

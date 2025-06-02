@@ -1,26 +1,43 @@
 import { db } from "../../../firebase/config";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { WordEntry } from "../../../entities/types/wordEntry";
+import { SentenceEntry } from "../../../entities/types/wordEntry";
+
+const mergeSentences = (
+  oldArr: SentenceEntry[],
+  newArr: SentenceEntry[]
+): SentenceEntry[] => {
+  const merged = [...oldArr]; // 既存をコピー
+
+  newArr.forEach((n) => {
+    const idx = merged.findIndex((o) => o.text === n.text);
+    if (idx !== -1) {
+      // text が同じ ⇒ documentId だけ上書き
+      merged[idx].documentId = n.documentId;
+    } else {
+      // text が新規 ⇒ 追加
+      merged.push(n);
+    }
+  });
+
+  return merged;
+};
 
 export const saveEntryToFirestore = async (
   userId: string,
   newEntry: WordEntry
 ) => {
   const docRef = doc(db, "users", userId, "wordEntries", newEntry.lemma);
-  const docSnap = await getDoc(docRef);
+  const snap = await getDoc(docRef);
 
-  if (docSnap.exists()) {
-    const existingData = docSnap.data() as WordEntry;
-
-    const mergedSentences = Array.from(
-      new Set([...existingData.sentences, ...newEntry.sentences])
-    );
+  if (snap.exists()) {
+    const existing = snap.data() as WordEntry;
 
     const updatedEntry: WordEntry = {
-      ...existingData,
+      ...existing,
       ...newEntry,
-      clickCount: existingData.clickCount + newEntry.clickCount,
-      sentences: mergedSentences,
+      clickCount: existing.clickCount + newEntry.clickCount,
+      sentences: mergeSentences(existing.sentences, newEntry.sentences),
     };
 
     await setDoc(docRef, updatedEntry);
