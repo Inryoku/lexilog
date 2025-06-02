@@ -17,12 +17,18 @@ export const DisplaySentence = ({
   onWordClick,
 }: DisplaySentenceProps) => {
   const { splitIntoWords, isClickableWord } = useWordDisplayLogic();
+
+  if (sentence.trim() === "") {
+    // 空行を 1 行分の高さで描画
+    return <div className="h-10 w-full" />;
+  }
+
   const words = splitIntoWords(sentence);
 
   return (
-    <div className="flex flex-col mb-6">
+    <div className="flex flex-col mb-2">
       <p className="flex flex-wrap">
-        {words.map((word: string, wordIndex: number) => (
+        {words.map((word, wordIndex) => (
           <ClickableWord
             key={wordIndex}
             word={word}
