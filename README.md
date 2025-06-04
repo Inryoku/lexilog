@@ -28,7 +28,7 @@ _A personalized and synchronized vocabulary tracking app for English learners._
 - **React + Vite**
 - **Redux Toolkit** for state management
 - **Firebase** for Auth and Firestore
-- **Emotion** for theming and style
+- **Tailwind** for theming and style
 - **TypeScript**
 - **Compromise / Intl.Segmenter** for parsing and text processing
 

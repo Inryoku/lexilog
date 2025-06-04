@@ -3,6 +3,7 @@ import { toggleBookmark } from "../slices/wordSlice";
 import { saveEntryToFirestore } from "../services/saveEntryToFirestore";
 import { useAuth } from "../../auth/AuthContext";
 import { RootState } from "../../../store/store";
+import { toFirestoreDto } from "../../../mappers/wordMapper";
 
 export const useHandleToggleBookmark = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,8 @@ export const useHandleToggleBookmark = () => {
         ...entries[lemma],
         isBookmarked: !entries[lemma].isBookmarked,
       };
-      await saveEntryToFirestore(user.uid, updatedEntry);
+      const dto = toFirestoreDto(updatedEntry);
+      await saveEntryToFirestore(user.uid, dto);
     }
   };
 };

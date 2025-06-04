@@ -5,7 +5,7 @@ import { AiFillGoogleCircle } from "react-icons/ai";
 import { FaGoogle } from "react-icons/fa";
 import { FaNewspaper, FaRegNewspaper } from "react-icons/fa6";
 import { MdLogout } from "react-icons/md";
-import { handleGoogleLogin } from "../../login/services/handlegoogleLogin";
+import { handleGoogleLogin } from "../../login/services/handleGoogleLogin";
 import { handleGoogleLogout } from "../../login/services/handleGoogleLogout";
 import { useAuth } from "../../auth/AuthContext";
 
