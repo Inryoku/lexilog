@@ -4,6 +4,7 @@ import { setClickedWord } from "../../displayArea/slices/clickedWordSlice";
 import { saveEntryToFirestore } from "../services/saveEntryToFirestore";
 import { useAuth } from "../../auth/AuthContext";
 import { WordEntry } from "../../../entities/types/wordEntry";
+import { toFirestoreDto } from "../../../mappers/wordMapper";
 
 export const useRegisterWordEntry = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,13 @@ export const useRegisterWordEntry = () => {
       // When meaning is empty, do not register
       dispatch(addOrUpdateWordEntry(entry)); // ← これでentriesにも反映
       if (user) {
-        await saveEntryToFirestore(user.uid, entry); // ← Firestore同期
+        try {
+          const dto = toFirestoreDto(entry);
+          await saveEntryToFirestore(user.uid, dto);
+        } catch (e) {
+          console.warn("Firestoreへの保存に失敗:", e);
+          // ここでアプリ内通知 or ローカル保存に回してもよい
+        }
       }
     }
   };

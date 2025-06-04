@@ -28,17 +28,21 @@ export const useDisplayAreaHooks = () => {
     setSentenceIndex(sentenceIndex);
     console.log("Word clicked:", word, "Sentence index:", sentenceIndex);
 
-    // SentenceSet[] から文と対応する documentId を探す
-    const { sentence, documentId } = findSentenceAndDocumentId(
-      displaySentences,
-      sentenceIndex
-    );
+    try {
+      // SentenceSet[] から文と対応する documentId を探す
+      const { sentence, documentId } = findSentenceAndDocumentId(
+        displaySentences,
+        sentenceIndex
+      );
 
-    const wordEntry = await createWordEntry(word, sentence, documentId);
-    console.log("Word object created:", wordEntry);
-
-    await registerWordEntry(wordEntry);
-    endProcessing();
+      const wordEntry = await createWordEntry(word, sentence, documentId);
+      await registerWordEntry(wordEntry);
+    } catch (e) {
+      console.error("Word登録処理中にエラー:", e);
+      // エラー通知出したり、最低限UIに反映したりは検討
+    } finally {
+      endProcessing();
+    }
   };
 
   return { handleWordClick, displaySentences, clickedSentenceIndex };

@@ -1,11 +1,12 @@
 import { getLemma } from "../services/lemmaService";
 import { fetchMeaningAndSynonyms } from "./fetchMeaningAndSynonyms";
+import { WordEntry } from "../../../entities/types/wordEntry";
 
 export const createWordEntry = async (
   word: string,
   sentence: string,
   documentId: string
-) => {
+): Promise<WordEntry> => {
   const lemma = await getLemma(word);
   const { meaning, synonyms } = await fetchMeaningAndSynonyms(lemma);
 
@@ -16,11 +17,11 @@ export const createWordEntry = async (
     sentences: [
       {
         text: sentence,
-        documentId: documentId, // 後で使う時のための伏線。
+        documentId: documentId,
       },
     ],
-    clickCount: 1, // 初回クリックなので 1
-    lastClickedTime: new Date().getTime(), // ここで入れるのは正解（クリック時に呼ばれる関数なので）
-    isBookmarked: false, // 新規ではfalse
+    clickCount: 1,
+    lastClickedTime: new Date(),
+    isBookmarked: false,
   };
 };

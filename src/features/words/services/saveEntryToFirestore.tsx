@@ -1,6 +1,6 @@
 import { db } from "../../../firebase/config";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { WordEntry } from "../../../entities/types/wordEntry";
+import { WordEntryFirestoreDto } from "../../../dtos/wordEntryFirestoreDto";
 import { SentenceEntry } from "../../../entities/types/wordEntry";
 
 const mergeSentences = (
@@ -25,15 +25,15 @@ const mergeSentences = (
 
 export const saveEntryToFirestore = async (
   userId: string,
-  newEntry: WordEntry
+  newEntry: WordEntryFirestoreDto
 ) => {
   const docRef = doc(db, "users", userId, "wordEntries", newEntry.lemma);
   const snap = await getDoc(docRef);
 
   if (snap.exists()) {
-    const existing = snap.data() as WordEntry;
+    const existing = snap.data() as WordEntryFirestoreDto;
 
-    const updatedEntry: WordEntry = {
+    const updatedEntry: WordEntryFirestoreDto = {
       ...existing,
       ...newEntry,
       clickCount: existing.clickCount + newEntry.clickCount,

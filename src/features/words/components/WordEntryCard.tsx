@@ -1,9 +1,9 @@
 import React from "react";
-import { WordEntry } from "../../../entities/types/wordEntry";
+import { WordEntryDisplay } from "../models/wordEntryDisplay";
 import { GiSoundWaves } from "react-icons/gi";
 
 type WordEntryCardProps = {
-  entry: WordEntry;
+  entry: WordEntryDisplay;
   onBookmarkToggle: (lemma: string) => void;
   handlePlaySpeech: (text: string) => void;
 };
@@ -35,15 +35,11 @@ export const WordEntryCard: React.FC<WordEntryCardProps> = ({
       </div>
 
       {/* synonyms */}
-      <div className="bg-subSpot p-2  mb-4">
-        {entry.synonyms.map((synonym, idx) => (
-          <span key={idx}>
-            {synonym}
-            {idx < entry.synonyms.length - 1 ? ", " : ""}
-          </span>
-        ))}
+      <div className="bg-subSpot p-2 mb-4">
+        <span>{entry.synonymsText}</span>
       </div>
 
+      {/* 最初の例文 */}
       {entry.sentences[0] && (
         <p className="text-gray-700">
           <button

@@ -1,7 +1,8 @@
 import { db } from "../../../firebase/config";
 import { collection, getDocs } from "firebase/firestore";
-import { WordEntry } from "../../../entities/types/wordEntry";
+import { fromFirestoreDto } from "../../../mappers/wordMapper";
 import { WordEntryMap } from "../../../entities/types/wordEntryMap";
+import { WordEntryFirestoreDto } from "../../../dtos/wordEntryFirestoreDto";
 
 export const fetchUserEntries = async (
   userId: string
@@ -12,8 +13,9 @@ export const fetchUserEntries = async (
   const entries: WordEntryMap = {};
 
   snapshot.forEach((doc) => {
-    const data = doc.data() as WordEntry;
-    entries[data.lemma] = data;
+    const dto = doc.data() as WordEntryFirestoreDto;
+    const domainModel = fromFirestoreDto(dto);
+    entries[domainModel.lemma] = domainModel;
   });
 
   return entries;
