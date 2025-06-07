@@ -2,7 +2,7 @@ import React from "react";
 import { useHistoryHooks } from "./hooks/useHistoryHooks";
 import { WordEntryCard } from "../words/components/WordEntryCard";
 import { WordbookPagination } from "../wordbook/components/WordbookPagination";
-import { WordEntry } from "../../entities/types/wordEntry";
+import { WordEntryDisplay } from "../words/models/wordEntryDisplay";
 
 export default function HistoryContainer() {
   const {
@@ -17,7 +17,7 @@ export default function HistoryContainer() {
 
   return (
     <div className="flex flex-col items-center w-full">
-      {entries.map((entry: WordEntry) => (
+      {entries.map((entry: WordEntryDisplay) => (
         <WordEntryCard
           key={entry.lemma}
           entry={entry}

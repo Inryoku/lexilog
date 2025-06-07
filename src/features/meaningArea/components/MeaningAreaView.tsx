@@ -1,42 +1,31 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
-import { RootState } from "../../../store/store";
-import { WordEntry } from "../../../entities/types/wordEntry";
+import { WordEntryCard } from "../../words/components/WordEntryCard";
+import { WordEntryDisplay } from "../../words/models/wordEntryDisplay";
 
-export const MeaningAreaView = () => {
-  const displayWordData = useSelector(
-    (state: RootState) => state.clickedWord.clickedWord
-  ) as WordEntry | null;
-  const isLoading = useSelector(
-    (state: RootState) => state.clickedWord.isLoading
-  );
+interface MeaningAreaViewProps {
+  meaningAreaData: WordEntryDisplay | null;
+  isLoading: boolean;
+  handleBookmarkToggle: (id: string) => void;
+  handlePlaySpeech: (text: string) => void;
+}
 
-  useEffect(() => {
-    console.log("state.clickedWord.clickedWord Has Changed:", displayWordData);
-  }, [displayWordData]);
-
+export const MeaningAreaView: React.FC<MeaningAreaViewProps> = ({
+  meaningAreaData,
+  isLoading,
+  handleBookmarkToggle,
+  handlePlaySpeech,
+}) => {
   return (
-    <div className="flex flex-col p-4 bg-gray-100 rounded-lg shadow-md">
+    <div className="flex flex-col items-center w-full">
       {isLoading ? (
-        <p>Loading...</p>
-      ) : displayWordData ? (
-        <>
-          <p>
-            <strong>{displayWordData.lemma}</strong>
-          </p>
-          <p>
-            <strong>{displayWordData.meaning}</strong>
-          </p>
-          <p>
-            {displayWordData.synonyms.map((synonym, idx) => (
-              <span key={idx}>
-                {synonym}
-                {idx < displayWordData.synonyms.length - 1 ? ", " : ""}
-              </span>
-            ))}
-          </p>
-        </>
+        <p className="flex flex-col p-4 bg-gray-100 rounded-lg">Loading...</p>
+      ) : meaningAreaData ? (
+        <WordEntryCard
+          key={meaningAreaData.lemma}
+          entry={meaningAreaData}
+          onBookmarkToggle={handleBookmarkToggle}
+          handlePlaySpeech={handlePlaySpeech}
+        />
       ) : (
         <p>No word selected.</p>
       )}
