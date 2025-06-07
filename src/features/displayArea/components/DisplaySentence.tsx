@@ -26,7 +26,7 @@ export const DisplaySentence = ({
   const words = splitIntoWords(sentence);
 
   return (
-    <div className="flex flex-col mb-2">
+    <div className="flex flex-col mb-2 w-full">
       <p className="flex flex-wrap">
         {words.map((word, wordIndex) => (
           <ClickableWord
