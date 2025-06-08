@@ -155,6 +155,31 @@ const EXCLUDED_WORDS = [
   "here",
   "there",
 
+  // 感嘆詞
+  "oh",
+  "ah",
+  "wow",
+  "ouch",
+  "oops",
+  "yay",
+  "hmm",
+  "uh",
+  "um",
+  "eh",
+  "huh",
+
+  //  thing body one 系
+  "something",
+  "everything",
+  "everyone",
+  "everybody",
+  "anything",
+  "anyone",
+  "anybody",
+  "nothing",
+  "nobody",
+  "somebody",
+
   // 省略形
   "re",
   "ve",
