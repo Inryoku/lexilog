@@ -1149,6 +1149,7 @@ export const EASY_WORDS = [
   "observe",
   "sentence",
   "print",
+
   "progress",
   "truth",
   "nobody",

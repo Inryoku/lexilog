@@ -1,17 +1,21 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
-import { WordEntry } from "../../../entities/types/wordEntry";
+
 import { WordEntryDisplay } from "../models/wordEntryDisplay";
 import { toDisplayModel } from "../../../mappers/wordMapper";
 
 export const getClickedWordData = () => {
   const rawWordEntry = useSelector(
-    (state: RootState) => state.clickedWord.clickedWord
-  ) as WordEntry | null;
+    (state: RootState) => state.clickedWord.clickedWord?.lemma
+  ) as string | null;
 
-  const clickedWordData: WordEntryDisplay | null = rawWordEntry
-    ? toDisplayModel(rawWordEntry)
+  const entriesObj = useSelector((state: RootState) => state.word.entries);
+
+  const filteredEntry = rawWordEntry ? entriesObj[rawWordEntry] : null;
+
+  const clickedWordData: WordEntryDisplay | null = filteredEntry
+    ? toDisplayModel(filteredEntry)
     : null;
 
   useEffect(() => {

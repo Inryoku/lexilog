@@ -1,9 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import { useMemo } from "react";
-import { wordEntryToDisplayModel } from "../../words/useCases/wordEntryToDisplayModel";
-import { WordEntryDisplay } from "../../words/models/wordEntryDisplay";
-import { WordEntry } from "../../../entities/types/wordEntry";
+import { toDisplayModel } from "../../../mappers/wordMapper";
 
 export const usePaginatedEntries = (
   page: number,
@@ -13,7 +11,7 @@ export const usePaginatedEntries = (
   const entriesObj = useSelector((state: RootState) => state.word.entries);
 
   const displayEntries = useMemo(
-    () => Object.values(entriesObj).map(wordEntryToDisplayModel),
+    () => Object.values(entriesObj).map(toDisplayModel),
     [entriesObj]
   );
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { WordEntryCard } from "../../words/components/WordEntryCard";
+import { WordMeaningCard } from "../../words/components/WordMeaningCard";
 import { WordEntryDisplay } from "../../words/models/wordEntryDisplay";
 
 interface MeaningAreaViewProps {
@@ -18,16 +18,20 @@ export const MeaningAreaView: React.FC<MeaningAreaViewProps> = ({
   return (
     <div className="flex flex-col items-center w-full">
       {isLoading ? (
-        <p className="flex flex-col p-4 bg-gray-100 rounded-lg">Loading...</p>
+        <p className="flex flex-col w-11/12 bg-subBgAccent text-bg p-4">
+          Loading...
+        </p>
       ) : meaningAreaData ? (
-        <WordEntryCard
+        <WordMeaningCard
           key={meaningAreaData.lemma}
           entry={meaningAreaData}
           onBookmarkToggle={handleBookmarkToggle}
           handlePlaySpeech={handlePlaySpeech}
         />
       ) : (
-        <p>No word selected.</p>
+        <p className="flex flex-col w-11/12 bg-subBgAccent text-bg p-4">
+          Sorry, no meaning available for this word.
+        </p>
       )}
     </div>
   );

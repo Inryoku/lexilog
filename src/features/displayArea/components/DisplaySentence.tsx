@@ -2,12 +2,14 @@ import { ClickableWord } from "./ClickableWord";
 import { MeaningAreaContainer } from "../../../features/meaningArea/meaningAreaContainer";
 import { useWordDisplayLogic } from "../hooks/useWordDisplayLogic";
 import React from "react";
+import { GiSoundWaves } from "react-icons/gi";
 
 type DisplaySentenceProps = {
   sentence: string;
   sentenceIndex: number;
   clickedSentenceIndex: number;
   onWordClick: (word: string, sentenceIndex: number) => void;
+  handlePlaySpeech: (text: string) => void; // オプションで音声再生機能を追加
 };
 
 export const DisplaySentence = ({
@@ -15,6 +17,7 @@ export const DisplaySentence = ({
   sentenceIndex,
   clickedSentenceIndex,
   onWordClick,
+  handlePlaySpeech,
 }: DisplaySentenceProps) => {
   const { splitIntoWords, isClickableWord } = useWordDisplayLogic();
 
@@ -28,6 +31,12 @@ export const DisplaySentence = ({
   return (
     <div className="flex flex-col mb-2 w-full">
       <p className="flex flex-wrap">
+        <button
+          onClick={() => handlePlaySpeech(sentence)}
+          className="text-gray-500 text-xl focus:outline-none hover:text-gray-800 transition-colors"
+        >
+          <GiSoundWaves size={12} />
+        </button>
         {words.map((word, wordIndex) => (
           <ClickableWord
             key={wordIndex}

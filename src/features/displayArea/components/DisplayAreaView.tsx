@@ -6,12 +6,14 @@ interface DisplayAreaViewProps {
   onWordClick: (word: string, sentenceIndex: number) => void;
   displaySentences: SentenceSet[];
   clickedSentenceIndex: number | null;
+  handlePlaySpeech: (text: string) => void;
 }
 
 export const DisplayAreaView: React.FC<DisplayAreaViewProps> = ({
   onWordClick,
   displaySentences,
   clickedSentenceIndex,
+  handlePlaySpeech,
 }) => {
   const flatSentences = displaySentences.flatMap((set) => set.sentences);
 
@@ -24,6 +26,7 @@ export const DisplayAreaView: React.FC<DisplayAreaViewProps> = ({
           sentenceIndex={index}
           clickedSentenceIndex={clickedSentenceIndex ?? -1}
           onWordClick={onWordClick}
+          handlePlaySpeech={handlePlaySpeech}
         />
       ))}
     </div>
